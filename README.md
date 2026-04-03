@@ -1,51 +1,95 @@
-# URL Shortener (Expo + React Native + TypeScript)
+# Pocket Links
 
-App mobile para encurtar URLs usando a API proposta no desafio.
+Aplicativo mobile feito com **Expo + React Native + TypeScript** para demonstrar uma abordagem mais autoral e publicável de um encurtador de URL.
 
-## Requisitos
+O projeto nasceu a partir de um teste técnico antigo e foi evoluído para virar um **case público de arquitetura mobile**, com foco em:
 
--   Node.js 20.x
--   Yarn 1.x
--   Expo CLI
+- organização de pastas por feature;
+- separação de responsabilidades;
+- persistência local de histórico;
+- fila offline simulada;
+- navegação simples com header, bottom bar e drawer;
+- testes unitários para regras centrais.
 
-## Instalação
+## Objetivo
 
-``` bash
+Mais do que ser um produto comercial, a proposta aqui é servir como um projeto de estudo e portfólio para mostrar:
+
+- estrutura de projeto em React Native;
+- fluxo de criação e persistência de links;
+- experiência offline-first;
+- boas práticas de componentização e modelagem de estado;
+- base pronta para futuras evoluções como autenticação, sync real e testes E2E.
+
+## Principais funcionalidades
+
+- criação de links curtos via provider local de demonstração;
+- histórico persistido em cache local;
+- modo offline com fila pendente para sincronização posterior;
+- favoritos;
+- busca por URL, alias ou link curto;
+- contador de cópias;
+- telas de Home, Histórico, Configurações e Sobre;
+- menu lateral com navegação rápida.
+
+## Estrutura
+
+```text
+.
+├── App.tsx
+├── app.config.ts
+├── assets
+│   ├── adaptive-icon.png
+│   ├── icon.png
+│   └── splash-icon.png
+├── src
+│   ├── app
+│   │   ├── AppShell.tsx
+│   │   └── screens
+│   ├── features
+│   │   └── links
+│   │       ├── components
+│   │       ├── hooks
+│   │       ├── providers
+│   │       ├── storage
+│   │       ├── types.ts
+│   │       └── utils
+│   ├── infrastructure
+│   │   └── storage
+│   └── shared
+│       ├── components
+│       ├── theme
+│       └── utils
+└── tests
+    └── unit
+```
+
+## Stack
+
+- **Expo**
+- **React Native**
+- **TypeScript**
+- **AsyncStorage** para persistência local
+- **Jest** para testes unitários
+
+## Executando
+
+```bash
 yarn
+yarn start
 ```
 
-## Rodar em desenvolvimento
+## Testes unitários
 
-``` bash
-yarn expo start
-```
-
-Pressione: - a → Android - i → iOS (macOS)
-
-## Rodar testes
-
-``` bash
+```bash
 yarn test
 ```
 
-## Estrutura principal
+## Próximos passos pensados para o projeto
 
--   src/
-    -   app/
-    -   components/
-    -   hooks/
-    -   services/
-    -   utils/
-    -   state/
--   tests/
-
-## API utilizada
-
-POST https://url-shortener-server.onrender.com/api/alias
-
-Body: { "url": "https://..." }
-
-O histórico é mantido apenas em memória, conforme especificado no
-enunciado.
-
-O warmup.ts reduz o atraso da primeira requisição causado pelo cold start da API.
+- autenticação e sincronização real de histórico;
+- suporte a múltiplos providers de encurtamento;
+- fila offline com retry exponencial;
+- analytics local;
+- testes E2E com Maestro ou equivalente;
+- versão web com fluxo dedicado.

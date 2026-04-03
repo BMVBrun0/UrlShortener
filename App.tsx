@@ -1,21 +1,13 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { ShortenerScreen } from "./src/app/ShortenerScreen";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { StatusBar } from "expo-status-bar";
+import { AppShell } from "./src/app/AppShell";
 
 export default function App() {
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
-        <ShortenerScreen />
-      </SafeAreaView>
+      <StatusBar style="light" />
+      <AppShell />
     </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#ffffff"
-  }
-});

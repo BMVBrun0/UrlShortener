@@ -12,3 +12,7 @@ jest.mock("@expo/vector-icons", () => {
     Ionicons: (props: any) => React.createElement("Ionicons", props, null)
   };
 });
+
+jest.mock("@react-native-async-storage/async-storage", () =>
+  require("@react-native-async-storage/async-storage/jest/async-storage-mock")
+);
